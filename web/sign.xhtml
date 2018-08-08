@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>JSF Sample Login</title>
+    <style type="text/css">
+        body{
+            font-family: "cursive";
+            background-color: #2c3e50;
+        }
+        #loginForm{
+            height: 300px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f1c40f ;
+            border: 1px solid black;
+            padding: 15px;
+        }
+        form .deneme{
+            text-decoration: none;
+            margin-top: 20px;
+            border:2px solid black;
+            width: 90px;
+            height: 40px;
+            cursor: pointer;
+            background-color: #f1c40f;
+        }
+        form .deneme:hover{
+            background-color: black;
+            color: #f1c40f;
+        }
+        form .login-input{;
+            height: 25px;
+            border: 1px solid black;
+            background-color: #ecf0f1 ;
+        }
+        form .sign-btn{
+            width: 90;
+            text-decoration: none;
+
+        }
+
+    </style>
+</h:head>
+<h:body>
+
+    <h:form id="loginForm">
+
+        <h2>Kayıt Formu</h2>
+        <h:panelGrid columns="2">
+
+            <h:outputText value="T.C No: " />
+            <h:inputText  class="login-input" value="" required="true"/>
+
+            <h:outputText value="Şifre: " />
+            <h:inputSecret class="login-input" value="" required="true"/>
+
+            <h:outputText value="E-posta: " />
+            <h:inputText  class="login-input" value="" required="true"/>
+
+            <h:outputText value="Okul :" />
+            <h:inputSecret class="login-input" value="" required="true"/>
+
+            <h:outputText value="Staj Süresi :" />
+            <h:inputSecret class="login-input" value="" required="true"/>
+
+            <h:commandButton class="deneme" value="Onayla" action="#{loginBean.validateUserLogin}" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
