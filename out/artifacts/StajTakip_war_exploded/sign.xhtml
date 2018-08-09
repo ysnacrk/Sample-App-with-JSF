@@ -50,22 +50,22 @@
         <h2>Kayıt Formu</h2>
         <h:panelGrid columns="2">
 
-            <h:outputText value="T.C No: " />
-            <h:inputText  class="login-input" value="" required="true"/>
+            <h:outputText value="Staj No" />
+            <h:inputText  class="login-input" value="#{addBean.no}" required="true"/>
 
             <h:outputText value="Şifre: " />
-            <h:inputSecret class="login-input" value="" required="true"/>
+            <h:inputSecret class="login-input" value="#{addBean.password}" required="true"/>
 
             <h:outputText value="E-posta: " />
-            <h:inputText  class="login-input" value="" required="true"/>
+            <h:inputText  class="login-input" value="#{addBean.mail}" required="true"/>
 
             <h:outputText value="Okul :" />
-            <h:inputSecret class="login-input" value="" required="true"/>
+            <h:inputText class="login-input" value="#{addBean.school}" required="true"/>
 
             <h:outputText value="Staj Süresi :" />
-            <h:inputSecret class="login-input" value="" required="true"/>
+            <h:inputText class="login-input" value="#{addBean.time}" required="true"/>
 
-            <h:commandButton class="deneme" value="Onayla" action="#{loginBean.validateUserLogin}" />
+            <h:commandButton class="deneme" value="Onayla" action="#{addBean.saveDataBase()}" />
         </h:panelGrid>
     </h:form>
 </h:body>
