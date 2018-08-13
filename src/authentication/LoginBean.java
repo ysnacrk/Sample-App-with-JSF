@@ -1,5 +1,6 @@
 
-import authentication.Compare;
+package authentication;
+
 import connection.ConnectionBean;
 
 import javax.faces.bean.ManagedBean;
@@ -8,15 +9,33 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-@ManagedBean @SessionScoped
+
+@ManagedBean
+@SessionScoped
 public class LoginBean {
 
     private int no;
     private int password;
 
+    private int dbNo;
+    private int dbPassword;
+
+    public int getDbNo() {
+        return dbNo;
+    }
+
+    public void setDbNo(int dbNo) {
+        this.dbNo = dbNo;
+    }
+
+    public int getDbPassword() {
+        return dbPassword;
+    }
+
+    public void setDbPassword(int dbPassword) {
+        this.dbPassword = dbPassword;
+    }
 
     public int getNo() {
         return no;
@@ -34,38 +53,38 @@ public class LoginBean {
         this.password = password;
     }
 
-    List<Compare> compareTable = new ArrayList<>();
 
-    public List<Compare> getLoginInfo(){
+    public boolean getLoginInfo(int no , int password) {
         ConnectionBean connectionBean = new ConnectionBean();
         Connection connection = connectionBean.getConnection();
 
         PreparedStatement preparedStatement = null;
 
         try{
-            preparedStatement = connection.prepareStatement("SELECT intern_no, intern_password FROM staj_takip.intern.intern_table where intern_no = ?");
-            preparedStatement.setInt(1, no);
-            ResultSet resultSet = preparedStatement.executeQuery() ;
+            preparedStatement = connection.prepareStatement("SELECT intern_no, intern_password FROM staj_takip.intern.intern_table where intern_no = ? and intern_password = ?");
 
-            while(resultSet.next()){
-                Compare compare = new Compare();
-                compare.setNo("intern_no");
-                compare.setPassword("intern_password");
+            preparedStatement.setInt(1,no);
+            preparedStatement.setInt(2,password);
 
-                compareTable.add(compare);
-
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                return true;
             }
 
         }catch (SQLException e){
             System.out.println(e);
+            return false;
         }
+
+        return false;
 
     }
 
     public String validateUserLogin() {
+
         String navResult = "";
 
-        if () {
+        if (getLoginInfo(no,password)) {
             navResult = "success?faces-redirect=true";
         } else {
             navResult = "fail?faces-redirect=true";
