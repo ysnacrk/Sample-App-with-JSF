@@ -9,3 +9,7 @@ Sample internship follow-up project with Java Server Faces
 	<h1> Sign-in Page </h1>
   <img width="460" height="300" src="http://resimag.com/p1/fbcc02e457.png">
 </p>
+<p align="center">
+	<h1> Welcome Page </h1>
+  <img width="460" height="300" src="http://resimag.com/p1/8f2886a4dd.png">
+</p>
